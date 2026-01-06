@@ -96,6 +96,29 @@ const departmentOverview = [
       'Retention & Renewal Tracking'
     ],
     href: '/client-services'
+  },
+  {
+    id: 'operations',
+    title: 'Operations & HR',
+    description: 'Team management, virtual assistants, and operational excellence',
+    icon: Users,
+    color: 'bg-black',
+    trainings: [
+      { name: 'VA Management & Onboarding', completed: 0, total: 100 },
+      { name: 'Team Scheduling & Coordination', completed: 0, total: 100 },
+      { name: 'Agency Operations', completed: 0, total: 100 },
+      { name: 'Performance Management', completed: 0, total: 100 },
+      { name: 'Process Optimization', completed: 0, total: 100 },
+      { name: 'HR Best Practices', completed: 0, total: 100 },
+    ],
+    sops: [
+      'VA Hiring & Onboarding',
+      'Team Scheduling Protocols',
+      'Operations Management',
+      'Performance Reviews',
+      'Process Documentation'
+    ],
+    href: '/operations'
   }
 ]
 

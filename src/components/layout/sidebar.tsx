@@ -46,6 +46,7 @@ const navigation = [
       { name: 'Webinar Management', href: '/sops/webinars' },
       { name: 'VA Operations', href: '/sops/va-ops' },
       { name: 'Schedules & HR', href: '/sops/schedules-hr' },
+      { name: 'Schedules & HR', href: '/sops/schedules-hr' },
     ]
   },
 

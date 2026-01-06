@@ -4,9 +4,375 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Progress } from '@/components/ui/progress'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
-import { CheckSquare, Clock, Calendar, AlertTriangle, CheckCircle, Users, Code, PenTool } from 'lucide-react'
+import { CheckSquare, Clock, Calendar, AlertTriangle, CheckCircle, Users, Code, PenTool, Target, FileText, Mail } from 'lucide-react'
 
 const sopCategories = [
+  {
+    id: 'mission-vision',
+    title: 'Mission & Vision',
+    icon: Target,
+    color: 'bg-purple-500',
+    tasks: [
+      {
+        id: 1,
+        title: 'Company Mission Review',
+        description: 'Review and understand Locatix mission',
+        completed: true,
+        deadline: 'Monthly',
+        priority: 'high',
+        subtasks: [
+          { id: 1, title: 'Read mission statement', completed: true },
+          { id: 2, title: 'Understand core beliefs', completed: true },
+          { id: 3, title: 'Review what we avoid', completed: true }
+        ]
+      },
+      {
+        id: 2,
+        title: 'Core Values Alignment',
+        description: 'Ensure team alignment with company values',
+        completed: false,
+        deadline: 'Quarterly',
+        priority: 'medium',
+        subtasks: [
+          { id: 1, title: 'Review core beliefs', completed: true },
+          { id: 2, title: 'Discuss strengths', completed: false },
+          { id: 3, title: 'Address flaws we\'re fixing', completed: false }
+        ]
+      }
+    ]
+  },
+  {
+    id: 'icp-mapping',
+    title: 'ICP Mapping',
+    icon: Target,
+    color: 'bg-green-500',
+    tasks: [
+      {
+        id: 1,
+        title: 'Geographic Targeting Review',
+        description: 'Review target geographic markets',
+        completed: true,
+        deadline: 'Monthly',
+        priority: 'high',
+        subtasks: [
+          { id: 1, title: 'North America focus', completed: true },
+          { id: 2, title: 'Europe expansion', completed: true },
+          { id: 3, title: 'Gulf States opportunities', completed: true }
+        ]
+      },
+      {
+        id: 2,
+        title: 'Demographic Analysis',
+        description: 'Review target demographics and verticals',
+        completed: false,
+        deadline: 'Monthly',
+        priority: 'high',
+        subtasks: [
+          { id: 1, title: 'Geospatial SaaS focus', completed: true },
+          { id: 2, title: 'Insurtech integration', completed: false },
+          { id: 3, title: 'Logistics optimization', completed: false }
+        ]
+      }
+    ]
+  },
+  {
+    id: 'crm-ops',
+    title: 'CRM Operations',
+    icon: FileText,
+    color: 'bg-blue-500',
+    tasks: [
+      {
+        id: 1,
+        title: 'Contact Management',
+        description: 'Maintain accurate contact database',
+        completed: true,
+        deadline: 'Daily',
+        priority: 'high',
+        subtasks: [
+          { id: 1, title: 'Update contact information', completed: true },
+          { id: 2, title: 'Clean duplicate entries', completed: true },
+          { id: 3, title: 'Verify email addresses', completed: false }
+        ]
+      },
+      {
+        id: 2,
+        title: 'Client Communication Setup',
+        description: 'Configure communication channels',
+        completed: false,
+        deadline: 'Weekly',
+        priority: 'medium',
+        subtasks: [
+          { id: 1, title: 'Slack integration', completed: true },
+          { id: 2, title: 'Google Chat setup', completed: false },
+          { id: 3, title: 'Discord automation', completed: false }
+        ]
+      }
+    ]
+  },
+  {
+    id: 'outbound',
+    title: 'Outbound SOPs',
+    icon: Mail,
+    color: 'bg-orange-500',
+    tasks: [
+      {
+        id: 1,
+        title: 'Lead Generation',
+        description: 'Generate and qualify new prospects',
+        completed: true,
+        deadline: 'Daily',
+        priority: 'high',
+        subtasks: [
+          { id: 1, title: 'Lemlist campaigns', completed: true },
+          { id: 2, title: 'Apollo research', completed: true },
+          { id: 3, title: 'Community engagement', completed: false }
+        ]
+      },
+      {
+        id: 2,
+        title: 'Initial Outreach',
+        description: 'Execute first-touch messaging campaigns',
+        completed: false,
+        deadline: 'Daily',
+        priority: 'high',
+        subtasks: [
+          { id: 1, title: 'Manual messaging', completed: true },
+          { id: 2, title: 'Contact form responses', completed: false },
+          { id: 3, title: 'LinkedIn connection requests', completed: false }
+        ]
+      },
+      {
+        id: 3,
+        title: 'Follow-up Sequences',
+        description: 'Maintain engagement with prospects',
+        completed: false,
+        deadline: 'Daily',
+        priority: 'medium',
+        subtasks: [
+          { id: 1, title: '24-48h follow-ups', completed: true },
+          { id: 2, title: '4-5 day sequences', completed: false },
+          { id: 3, title: 'GIF reminders', completed: false }
+        ]
+      }
+    ]
+  },
+  {
+    id: 'sales-scripts',
+    title: 'Sales Scripts & GTM',
+    icon: Users,
+    color: 'bg-red-500',
+    tasks: [
+      {
+        id: 1,
+        title: 'Main Sales Script Review',
+        description: 'Master the core outbound sales script',
+        completed: false,
+        deadline: 'Weekly',
+        priority: 'high',
+        subtasks: [
+          { id: 1, title: 'Script memorization', completed: false },
+          { id: 2, title: 'Role-playing practice', completed: false },
+          { id: 3, title: 'Objection handling', completed: false }
+        ]
+      },
+      {
+        id: 2,
+        title: 'GTM Strategy Implementation',
+        description: 'Execute go-to-market strategies',
+        completed: false,
+        deadline: 'Monthly',
+        priority: 'high',
+        subtasks: [
+          { id: 1, title: 'ICP definition', completed: true },
+          { id: 2, title: 'Messaging alignment', completed: false },
+          { id: 3, title: 'Campaign planning', completed: false }
+        ]
+      }
+    ]
+  },
+  {
+    id: 'content-dev',
+    title: 'Content Development',
+    icon: PenTool,
+    color: 'bg-pink-500',
+    tasks: [
+      {
+        id: 1,
+        title: 'Content Calendar Planning',
+        description: 'Plan and schedule content creation',
+        completed: false,
+        deadline: 'Weekly',
+        priority: 'high',
+        subtasks: [
+          { id: 1, title: 'WePost scheduling', completed: true },
+          { id: 2, title: 'Canva design prep', completed: false },
+          { id: 3, title: 'Topic ideation', completed: false }
+        ]
+      },
+      {
+        id: 2,
+        title: 'Copywriting Frameworks',
+        description: 'Apply proven copywriting techniques',
+        completed: false,
+        deadline: 'Weekly',
+        priority: 'medium',
+        subtasks: [
+          { id: 1, title: 'AIDA structure', completed: true },
+          { id: 2, title: 'PAS framework', completed: false },
+          { id: 3, title: 'SUCCES principles', completed: false }
+        ]
+      }
+    ]
+  },
+  {
+    id: 'seo-video',
+    title: 'SEO & Video Production',
+    icon: Code,
+    color: 'bg-indigo-500',
+    tasks: [
+      {
+        id: 1,
+        title: 'SEO Strategy Implementation',
+        description: 'Execute SEO best practices using Semrush',
+        completed: false,
+        deadline: 'Weekly',
+        priority: 'high',
+        subtasks: [
+          { id: 1, title: 'Keyword research', completed: false },
+          { id: 2, title: 'Content optimization', completed: false },
+          { id: 3, title: 'Position tracking', completed: false }
+        ]
+      },
+      {
+        id: 2,
+        title: 'Video Content Production',
+        description: 'Create promotional and educational videos',
+        completed: false,
+        deadline: 'Monthly',
+        priority: 'medium',
+        subtasks: [
+          { id: 1, title: 'Script development', completed: false },
+          { id: 2, title: 'Recording sessions', completed: false },
+          { id: 3, title: 'Post-production editing', completed: false }
+        ]
+      }
+    ]
+  },
+  {
+    id: 'webinars',
+    title: 'Webinar Management',
+    icon: Calendar,
+    color: 'bg-teal-500',
+    tasks: [
+      {
+        id: 1,
+        title: 'Pre-Event Planning',
+        description: 'Plan and promote webinar events',
+        completed: false,
+        deadline: 'Weekly',
+        priority: 'high',
+        subtasks: [
+          { id: 1, title: 'Invite CRM subset', completed: false },
+          { id: 2, title: 'LinkedIn promotion', completed: false },
+          { id: 3, title: 'Reminder sequences', completed: false }
+        ]
+      },
+      {
+        id: 2,
+        title: 'Event Execution',
+        description: 'Manage live webinar delivery',
+        completed: false,
+        deadline: 'Event Day',
+        priority: 'high',
+        subtasks: [
+          { id: 1, title: 'Strong CTA preparation', completed: false },
+          { id: 2, title: 'Technical setup', completed: false },
+          { id: 3, title: 'Q&A management', completed: false }
+        ]
+      }
+    ]
+  },
+  {
+    id: 'va-ops',
+    title: 'VA Operations',
+    icon: Users,
+    color: 'bg-cyan-500',
+    tasks: [
+      {
+        id: 1,
+        title: 'VA Hiring Process',
+        description: 'Recruit and onboard virtual assistants',
+        completed: false,
+        deadline: 'Monthly',
+        priority: 'high',
+        subtasks: [
+          { id: 1, title: 'Onlinejobs.ph sourcing', completed: false },
+          { id: 2, title: 'Loom video screening', completed: false },
+          { id: 3, title: 'Group interviews', completed: false }
+        ]
+      },
+      {
+        id: 2,
+        title: 'VA Onboarding & Training',
+        description: 'Train VAs on processes and tools',
+        completed: false,
+        deadline: 'Weekly',
+        priority: 'high',
+        subtasks: [
+          { id: 1, title: 'Expectation setting', completed: false },
+          { id: 2, title: 'Tool orientation', completed: false },
+          { id: 3, title: 'Loom SOP videos', completed: false }
+        ]
+      },
+      {
+        id: 3,
+        title: 'Daily Workflow Management',
+        description: 'Monitor and optimize VA performance',
+        completed: false,
+        deadline: 'Daily',
+        priority: 'medium',
+        subtasks: [
+          { id: 1, title: 'Start-of-day check-ins', completed: false },
+          { id: 2, title: 'Progress tracking', completed: false },
+          { id: 3, title: 'End-of-day reports', completed: false }
+        ]
+      }
+    ]
+  },
+  {
+    id: 'schedules-hr',
+    title: 'Schedules & HR',
+    icon: Calendar,
+    color: 'bg-amber-500',
+    tasks: [
+      {
+        id: 1,
+        title: 'Team Scheduling',
+        description: 'Manage team schedules and coordination',
+        completed: false,
+        deadline: 'Daily',
+        priority: 'high',
+        subtasks: [
+          { id: 1, title: 'Time zone coordination', completed: true },
+          { id: 2, title: 'Task assignments', completed: false },
+          { id: 3, title: 'Availability updates', completed: false }
+        ]
+      },
+      {
+        id: 2,
+        title: 'HR Processes',
+        description: 'Handle human resources and team development',
+        completed: false,
+        deadline: 'Monthly',
+        priority: 'medium',
+        subtasks: [
+          { id: 1, title: 'Performance reviews', completed: false },
+          { id: 2, title: 'Professional development', completed: false },
+          { id: 3, title: 'Team building activities', completed: false }
+        ]
+      }
+    ]
+  },
   {
     id: 'sdr',
     title: 'SDR/BDR SOPs',
