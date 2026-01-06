@@ -17,70 +17,63 @@ import { cn } from '@/lib/utils'
 import { LocatixLogo } from './locatix-logo'
 
 const navigation = [
+  // Dashboard
   { name: 'Dashboard', href: '/', icon: Home },
+
+  // Training Modules Section
   {
-    name: 'SDR/BDR Training',
-    href: '/sdr-bdr',
+    name: '🚀 Training Modules',
+    href: '#',
+    icon: BookOpen,
+    subItems: [
+      { name: 'SDR/BDR Training', href: '/sdr-bdr' },
+      { name: 'Content Marketing', href: '/content' },
+      { name: 'Web Development', href: '/webdev' },
+      { name: 'Client Services', href: '/client-services' },
+    ]
+  },
+
+  // Agency SOPs Section
+  {
+    name: '📋 Agency SOPs',
+    href: '#',
+    icon: CheckSquare,
+    subItems: [
+      { name: 'ICP Mapping & CRM Ops', href: '/sops/icp-crm' },
+      { name: 'Sales Scripts & GTM', href: '/sops/sales-gtm' },
+      { name: 'Content Development', href: '/sops/content-dev' },
+      { name: 'SEO & Video Production', href: '/sops/seo-video' },
+      { name: 'Webinar Management', href: '/sops/webinars' },
+      { name: 'VA Operations', href: '/sops/va-ops' },
+      { name: 'Schedules & HR', href: '/sops/schedules-hr' },
+    ]
+  },
+
+  // Client Workspaces Section
+  {
+    name: '🏢 Client Workspaces',
+    href: '#',
     icon: Users,
     subItems: [
-      { name: 'Onboarding', href: '/sdr-bdr/onboarding' },
-      { name: 'HPP & ABM', href: '/sdr-bdr/hpp-abm' },
-      { name: 'Prospecting', href: '/sdr-bdr/prospecting' },
-      { name: 'List Building', href: '/sdr-bdr/list-building' },
-      { name: 'Outreach', href: '/sdr-bdr/outreach' },
-      { name: 'Appointment Setting', href: '/sdr-bdr/appointment-setting' },
-      { name: 'Closing Fundamentals', href: '/sdr-bdr/closing-fundamentals' },
-      { name: 'Recurring Training', href: '/sdr-bdr/recurring' },
+      { name: 'Client Templates', href: '/clients/templates' },
+      { name: 'Active Projects', href: '/clients/projects' },
+      { name: 'Custom GTM Strategies', href: '/clients/gtm-strategies' },
+      { name: 'ICP Prospecting Guides', href: '/clients/icp-guides' },
+      { name: 'Tender SOPs', href: '/clients/tenders' },
     ]
   },
+
+  // Tools & Analytics
   {
-    name: 'Web Development',
-    href: '/webdev',
-    icon: Code,
+    name: '📊 Analytics & Tools',
+    href: '#',
+    icon: BarChart3,
     subItems: [
-      { name: 'Onboarding', href: '/webdev/onboarding' },
-      { name: 'Next.js', href: '/webdev/nextjs' },
-      { name: 'Cursor', href: '/webdev/cursor' },
-      { name: 'Git', href: '/webdev/git' },
-      { name: 'Vercel', href: '/webdev/vercel' },
-      { name: 'Backend & Environment', href: '/webdev/backend' },
-      { name: 'Deployments', href: '/webdev/deployments' },
-      { name: 'Domains & SEO', href: '/webdev/domains-seo' },
-      { name: 'Recurring Training', href: '/webdev/recurring' },
+      { name: 'Team Progress', href: '/progress' },
+      { name: 'Schedule & Planning', href: '/schedule' },
+      { name: 'Performance Metrics', href: '/analytics/metrics' },
     ]
   },
-  {
-    name: 'Content Marketing',
-    href: '/content',
-    icon: PenTool,
-    subItems: [
-      { name: 'Onboarding', href: '/content/onboarding' },
-      { name: 'Funnel Thinking', href: '/content/funnel-thinking' },
-      { name: 'Copywriting', href: '/content/copywriting' },
-      { name: 'Sales Assets', href: '/content/sales-assets' },
-      { name: 'Video Creation', href: '/content/video' },
-      { name: 'CMS Integration', href: '/content/cms-integration' },
-      { name: 'Distribution', href: '/content/posting' },
-      { name: 'Recurring Training', href: '/content/recurring' },
-    ]
-  },
-  {
-    name: 'Client Services',
-    href: '/client-services',
-    icon: Headphones,
-    subItems: [
-      { name: 'Onboarding', href: '/client-services/onboarding' },
-      { name: 'Customer Success', href: '/client-services/customer-success' },
-      { name: 'Account Management', href: '/client-services/account-management' },
-      { name: 'Support Excellence', href: '/client-services/support' },
-      { name: 'Relationship Building', href: '/client-services/relationships' },
-      { name: 'Retention & Expansion', href: '/client-services/retention' },
-      { name: 'Recurring Training', href: '/client-services/recurring' },
-    ]
-  },
-  { name: 'SOPs & Timetable', href: '/sops', icon: CheckSquare },
-  { name: 'Schedule', href: '/schedule', icon: Calendar },
-  { name: 'Progress', href: '/progress', icon: BarChart3 },
 ]
 
 export function Sidebar() {
