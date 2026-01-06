@@ -10,7 +10,8 @@ import {
   CheckSquare,
   Calendar,
   BarChart3,
-  Home
+  Home,
+  Headphones
 } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { LocatixLogo } from './locatix-logo'
@@ -61,6 +62,20 @@ const navigation = [
       { name: 'CMS Integration', href: '/content/cms-integration' },
       { name: 'Distribution', href: '/content/posting' },
       { name: 'Recurring Training', href: '/content/recurring' },
+    ]
+  },
+  {
+    name: 'Client Services',
+    href: '/client-services',
+    icon: Headphones,
+    subItems: [
+      { name: 'Onboarding', href: '/client-services/onboarding' },
+      { name: 'Customer Success', href: '/client-services/customer-success' },
+      { name: 'Account Management', href: '/client-services/account-management' },
+      { name: 'Support Excellence', href: '/client-services/support' },
+      { name: 'Relationship Building', href: '/client-services/relationships' },
+      { name: 'Retention & Expansion', href: '/client-services/retention' },
+      { name: 'Recurring Training', href: '/client-services/recurring' },
     ]
   },
   { name: 'SOPs & Timetable', href: '/sops', icon: CheckSquare },

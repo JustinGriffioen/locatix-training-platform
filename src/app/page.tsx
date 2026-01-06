@@ -4,7 +4,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Progress } from '@/components/ui/progress'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
-import { Users, Code, PenTool, BookOpen, CheckCircle, Clock, TrendingUp, FileText, Target } from 'lucide-react'
+import { Users, Code, PenTool, BookOpen, CheckCircle, Clock, TrendingUp, FileText, Target, Headphones } from 'lucide-react'
 import Link from 'next/link'
 
 const departmentOverview = [
@@ -73,6 +73,29 @@ const departmentOverview = [
       'Cross-Team Collaboration'
     ],
     href: '/content'
+  },
+  {
+    id: 'client-services',
+    title: 'Client Services',
+    description: 'Customer success, account management, and support excellence',
+    icon: Headphones,
+    color: 'bg-black',
+    trainings: [
+      { name: 'Customer Success Fundamentals', completed: 80, total: 100 },
+      { name: 'Account Management Excellence', completed: 60, total: 100 },
+      { name: 'Support Best Practices', completed: 45, total: 100 },
+      { name: 'Relationship Building', completed: 70, total: 100 },
+      { name: 'Retention Strategies', completed: 35, total: 100 },
+      { name: 'Upselling & Expansion', completed: 25, total: 100 },
+    ],
+    sops: [
+      'Client Onboarding Process',
+      'Account Review Cadence',
+      'Support Ticket Management',
+      'Client Communication Protocols',
+      'Retention & Renewal Tracking'
+    ],
+    href: '/client-services'
   }
 ]
 
@@ -122,15 +145,15 @@ export default function Dashboard() {
             <Progress value={totalProgress} className="h-3 bg-gray-100" />
             <div className="grid grid-cols-3 gap-4 pt-4 border-t border-gray-100">
               <div className="text-center">
-                <div className="text-lg font-bold text-black">3</div>
+                <div className="text-lg font-bold text-black">4</div>
                 <div className="text-xs text-gray-500">Departments</div>
               </div>
               <div className="text-center">
-                <div className="text-lg font-bold text-black">18</div>
+                <div className="text-lg font-bold text-black">24</div>
                 <div className="text-xs text-gray-500">Training Modules</div>
               </div>
               <div className="text-center">
-                <div className="text-lg font-bold text-black">12</div>
+                <div className="text-lg font-bold text-black">17</div>
                 <div className="text-xs text-gray-500">Active SOPs</div>
               </div>
             </div>
