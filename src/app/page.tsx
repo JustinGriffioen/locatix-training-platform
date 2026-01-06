@@ -7,70 +7,82 @@ import { Button } from '@/components/ui/button'
 import { Users, Code, PenTool, BookOpen, CheckCircle, Clock, TrendingUp, FileText, Target } from 'lucide-react'
 import Link from 'next/link'
 
-const trainingModules = [
+const departmentOverview = [
   {
     id: 'sdr-bdr',
-    title: 'SDR/BDR Training',
-    description: 'Master outbound prospecting, ABM, and appointment setting',
+    title: 'SDR/BDR Team',
+    description: 'Outbound sales prospecting and revenue generation',
     icon: Users,
-    color: 'bg-blue-500',
-    modules: [
-      { name: 'Onboarding', completed: true, progress: 100 },
-      { name: 'HPP & ABM', completed: false, progress: 85 },
-      { name: 'Prospecting', completed: false, progress: 75 },
-      { name: 'List Building', completed: false, progress: 60 },
-      { name: 'Outreach', completed: false, progress: 40 },
-      { name: 'Appointment Setting', completed: false, progress: 20 },
-      { name: 'Closing Fundamentals', completed: false, progress: 0, locked: true },
+    color: 'bg-black',
+    trainings: [
+      { name: 'ABM & HPP Fundamentals', completed: 85, total: 100 },
+      { name: 'Prospecting Mastery', completed: 75, total: 100 },
+      { name: 'List Building Strategies', completed: 60, total: 100 },
+      { name: 'Multi-Channel Outreach', completed: 40, total: 100 },
+      { name: 'Appointment Setting', completed: 20, total: 100 },
+      { name: 'Closing Fundamentals', completed: 0, total: 100, locked: true },
+    ],
+    sops: [
+      'Daily Prospecting Routine',
+      'List Building & Maintenance',
+      'Weekly Performance Review',
+      'CRM Data Management'
     ],
     href: '/sdr-bdr'
   },
   {
     id: 'webdev',
     title: 'Web Development',
-    description: 'Complete development workflow from code to deployment',
+    description: 'Full-stack development and deployment workflows',
     icon: Code,
-    color: 'bg-green-500',
-    modules: [
-      { name: 'Onboarding', completed: true, progress: 100 },
-      { name: 'Next.js', completed: true, progress: 100 },
-      { name: 'Cursor', completed: false, progress: 80 },
-      { name: 'Git', completed: true, progress: 100 },
-      { name: 'Vercel', completed: false, progress: 45 },
+    color: 'bg-black',
+    trainings: [
+      { name: 'Next.js Framework', completed: 100, total: 100 },
+      { name: 'Git & Version Control', completed: 100, total: 100 },
+      { name: 'Cursor IDE Mastery', completed: 80, total: 100 },
+      { name: 'Vercel Deployment', completed: 45, total: 100 },
+      { name: 'Backend & APIs', completed: 0, total: 100 },
+      { name: 'Domains & SEO', completed: 0, total: 100 },
+    ],
+    sops: [
+      'Code Review Process',
+      'Deployment Checklist',
+      'Git Workflow Standards',
+      'Security Best Practices'
     ],
     href: '/webdev'
   },
   {
     id: 'content',
     title: 'Content Marketing',
-    description: 'Strategic content creation across funnels and channels',
+    description: 'Strategic content creation and sales enablement',
     icon: PenTool,
-    color: 'bg-purple-500',
-    modules: [
-      { name: 'Onboarding', completed: true, progress: 100 },
-      { name: 'Funnel Thinking', completed: false, progress: 70 },
-      { name: 'Copywriting', completed: false, progress: 50 },
-      { name: 'Sales Assets', completed: false, progress: 35 },
-      { name: 'Video Creation', completed: false, progress: 65 },
-      { name: 'CMS Integration', completed: false, progress: 25 },
-      { name: 'Distribution', completed: false, progress: 30 },
+    color: 'bg-black',
+    trainings: [
+      { name: 'Funnel Thinking & Strategy', completed: 70, total: 100 },
+      { name: 'Advanced Copywriting', completed: 50, total: 100 },
+      { name: 'Sales Asset Creation', completed: 35, total: 100 },
+      { name: 'Video Content Production', completed: 65, total: 100 },
+      { name: 'CMS & Web Integration', completed: 25, total: 100 },
+      { name: 'Multi-Channel Distribution', completed: 30, total: 100 },
+    ],
+    sops: [
+      'Content Calendar Management',
+      'Brand Voice Guidelines',
+      'Performance Tracking',
+      'Cross-Team Collaboration'
     ],
     href: '/content'
   }
 ]
 
-const upcomingSessions = [
-  { title: 'Weekly SDR Outreach Review', time: 'Today, 2:00 PM', type: 'recurring' },
-  { title: 'Git Best Practices Workshop', time: 'Tomorrow, 10:00 AM', type: 'training' },
-  { title: 'Content Calendar Planning', time: 'Friday, 3:00 PM', type: 'planning' },
-]
 
 export default function Dashboard() {
   const totalProgress = Math.round(
-    trainingModules.reduce((acc, module) => {
-      const moduleProgress = module.modules.reduce((sum, m) => sum + m.progress, 0) / module.modules.length
-      return acc + moduleProgress
-    }, 0) / trainingModules.length
+    departmentOverview.reduce((acc, dept) => {
+      const deptProgress = dept.trainings.reduce((sum, t) => sum + (t.completed / t.total), 0) / dept.trainings.length
+      return acc + deptProgress
+    }, 0) / departmentOverview.length * 100
   )
 
   return (
@@ -110,114 +122,98 @@ export default function Dashboard() {
             <Progress value={totalProgress} className="h-3 bg-gray-100" />
             <div className="grid grid-cols-3 gap-4 pt-4 border-t border-gray-100">
               <div className="text-center">
-                <div className="text-lg font-bold text-black">2</div>
-                <div className="text-xs text-gray-500">Completed</div>
+                <div className="text-lg font-bold text-black">3</div>
+                <div className="text-xs text-gray-500">Departments</div>
               </div>
               <div className="text-center">
-                <div className="text-lg font-bold text-black">7</div>
-                <div className="text-xs text-gray-500">In Progress</div>
+                <div className="text-lg font-bold text-black">18</div>
+                <div className="text-xs text-gray-500">Training Modules</div>
               </div>
               <div className="text-center">
-                <div className="text-lg font-bold text-black">4</div>
-                <div className="text-xs text-gray-500">Remaining</div>
+                <div className="text-lg font-bold text-black">12</div>
+                <div className="text-xs text-gray-500">Active SOPs</div>
               </div>
             </div>
           </div>
         </CardContent>
       </Card>
 
-      {/* Training Modules */}
-      <div>
-        <div className="flex items-center gap-3 mb-8">
-          <div className="h-1 w-12 bg-black rounded-full"></div>
-          <h2 className="text-3xl font-bold text-black">Training Modules</h2>
-        </div>
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {trainingModules.map((module) => {
-            const Icon = module.icon
-            const completedCount = module.modules.filter(m => m.completed).length
-            const moduleProgress = Math.round(
-              module.modules.reduce((sum, m) => sum + m.progress, 0) / module.modules.length
-            )
 
-            return (
-              <Card key={module.id} className="hover:shadow-lg transition-shadow">
-                <CardHeader>
-                  <div className="flex items-center justify-between">
-                    <div className={`p-2 rounded-lg ${module.color}`}>
-                      <Icon className="h-6 w-6 text-white" />
-                    </div>
-                    <Badge variant={moduleProgress === 100 ? "default" : "secondary"}>
-                      {moduleProgress}% Complete
-                    </Badge>
-                  </div>
-                  <CardTitle className="text-lg">{module.title}</CardTitle>
-                  <CardDescription>{module.description}</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-3">
-                    <div className="flex justify-between text-sm text-gray-600">
-                      <span>{completedCount} of {module.modules.length} completed</span>
-                    </div>
-                    <Progress value={moduleProgress} className="h-2" />
-                    <div className="flex flex-wrap gap-1">
-                      {module.modules.slice(0, 3).map((subModule, index) => (
-                        <Badge
-                          key={index}
-                          variant={subModule.completed ? "default" : "outline"}
-                          className="text-xs"
-                        >
-                          {subModule.completed && <CheckCircle className="h-3 w-3 mr-1" />}
-                          {subModule.name}
-                        </Badge>
-                      ))}
-                      {module.modules.length > 3 && (
-                        <Badge variant="outline" className="text-xs">
-                          +{module.modules.length - 3} more
-                        </Badge>
-                      )}
-                    </div>
-                    <div className="w-full">
-                      <div className="text-center py-2 text-sm text-gray-600 border-t mt-4">
-                        View Module
-                      </div>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            )
-          })}
-        </div>
-      </div>
+      {/* Department Overview */}
+      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {departmentOverview.map((dept) => {
+          const Icon = dept.icon
+          const completedTrainings = dept.trainings.filter(t => !t.locked && t.completed === t.total).length
+          const totalTrainings = dept.trainings.filter(t => !t.locked).length
+          const deptProgress = Math.round(
+            dept.trainings.reduce((sum, t) => sum + (t.completed / t.total), 0) / dept.trainings.length * 100
+          )
 
-      {/* Upcoming Sessions */}
-      <Card className="border-gray-200 shadow-sm">
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2 text-xl">
-            <Clock className="h-5 w-5 text-black" />
-            Upcoming Sessions
-          </CardTitle>
-          <CardDescription className="text-gray-600">Don't miss your scheduled training sessions</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <div className="space-y-4">
-            {upcomingSessions.map((session, index) => (
-              <div key={index} className="flex items-center justify-between p-4 border border-gray-200 rounded-xl hover:border-gray-300 transition-colors">
-                <div className="flex-1">
-                  <p className="font-semibold text-black mb-1">{session.title}</p>
-                  <p className="text-sm text-gray-600">{session.time}</p>
+          return (
+            <Card key={dept.id} className="border-gray-200 shadow-sm">
+              <CardHeader>
+                <div className="flex items-center justify-between">
+                  <div className={`p-3 rounded-xl ${dept.color}`}>
+                    <Icon className="h-6 w-6 text-white" />
+                  </div>
+                  <Badge variant="outline" className="text-xs">
+                    {deptProgress}% Complete
+                  </Badge>
                 </div>
-                <Badge
-                  variant={session.type === 'recurring' ? 'default' : session.type === 'training' ? 'secondary' : 'outline'}
-                  className="ml-4"
-                >
-                  {session.type}
-                </Badge>
-              </div>
-            ))}
-          </div>
-        </CardContent>
-      </Card>
+                <CardTitle className="text-lg">{dept.title}</CardTitle>
+                <CardDescription className="text-gray-600">{dept.description}</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-4">
+                  {/* Training Progress */}
+                  <div>
+                    <div className="flex justify-between text-sm mb-2">
+                      <span className="font-medium text-gray-700">Training Progress</span>
+                      <span className="text-gray-600">{completedTrainings}/{totalTrainings} completed</span>
+                    </div>
+                    <Progress value={deptProgress} className="h-2" />
+                  </div>
+
+                  {/* Key Trainings */}
+                  <div>
+                    <p className="text-sm font-medium text-gray-700 mb-2">Key Trainings:</p>
+                    <ul className="text-sm text-gray-600 space-y-1">
+                      {dept.trainings.slice(0, 3).map((training, index) => (
+                        <li key={index} className="flex items-center gap-2">
+                          <div className={`w-2 h-2 rounded-full ${training.completed === training.total ? 'bg-green-500' : 'bg-gray-300'}`} />
+                          {training.name}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  {/* SOPs */}
+                  <div>
+                    <p className="text-sm font-medium text-gray-700 mb-2">Active SOPs:</p>
+                    <ul className="text-sm text-gray-600 space-y-1">
+                      {dept.sops.slice(0, 2).map((sop, index) => (
+                        <li key={index} className="flex items-center gap-2">
+                          <div className="w-2 h-2 rounded-full bg-black" />
+                          {sop}
+                        </li>
+                      ))}
+                      {dept.sops.length > 2 && (
+                        <li className="text-gray-500">+{dept.sops.length - 2} more SOPs</li>
+                      )}
+                    </ul>
+                  </div>
+
+                  <Link href={dept.href}>
+                    <Button className="w-full bg-black hover:bg-gray-800" variant="default">
+                      View Department
+                    </Button>
+                  </Link>
+                </div>
+              </CardContent>
+            </Card>
+          )
+        })}
+      </div>
     </div>
   )
 }
