@@ -146,7 +146,7 @@ export default function ProjectDetailPage() {
     )
   }
 
-  const StatusIcon = statusConfig[project.status].icon
+  const StatusIcon = statusConfig[project.status as keyof typeof statusConfig].icon
   const completedTasks = tasks.filter(t => t.completed).length
   const totalTasks = tasks.length
   const completedMilestones = project.milestones.filter(m => m.completed).length
@@ -195,10 +195,10 @@ export default function ProjectDetailPage() {
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
                   <StatusIcon className="h-5 w-5" />
-                  <Badge className={statusConfig[project.status].color}>
-                    {statusConfig[project.status].label}
+                  <Badge className={statusConfig[project.status as keyof typeof statusConfig].color}>
+                    {statusConfig[project.status as keyof typeof statusConfig].label}
                   </Badge>
-                  <Badge className={priorityConfig[project.priority]}>
+                  <Badge className={priorityConfig[project.priority as keyof typeof priorityConfig]}>
                     {project.priority} priority
                   </Badge>
                 </div>
@@ -343,7 +343,7 @@ export default function ProjectDetailPage() {
                     <h4 className={`text-sm font-medium ${task.completed ? 'line-through text-gray-500' : 'text-gray-900'}`}>
                       {task.title}
                     </h4>
-                    <Badge className={taskPriorityConfig[task.priority]}>
+                    <Badge className={taskPriorityConfig[task.priority as keyof typeof taskPriorityConfig]}>
                       {task.priority}
                     </Badge>
                   </div>

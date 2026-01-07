@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { Progress } from '@/components/ui/progress'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
+import Link from 'next/link'
 import {
   Plus,
   Calendar,
@@ -249,7 +250,7 @@ export default function ProjectsPage() {
       {/* Projects Grid */}
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {filteredProjects.map((project) => {
-          const StatusIcon = statusConfig[project.status].icon
+          const StatusIcon = statusConfig[project.status as keyof typeof statusConfig].icon
           const completedTasks = project.tasks.filter(t => t.completed).length
           const totalTasks = project.tasks.length
 
@@ -262,7 +263,7 @@ export default function ProjectsPage() {
                     <CardDescription className="mt-1">{project.client}</CardDescription>
                   </div>
                   <div className="flex items-center gap-2 ml-4">
-                    <Badge className={priorityConfig[project.priority]}>
+                    <Badge className={priorityConfig[project.priority as keyof typeof priorityConfig]}>
                       {project.priority}
                     </Badge>
                     <Button variant="ghost" size="sm">
@@ -280,7 +281,7 @@ export default function ProjectsPage() {
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
                       <StatusIcon className="h-4 w-4" />
-                      <Badge className={statusConfig[project.status].color}>
+                      <Badge className={statusConfig[project.status as keyof typeof statusConfig].color}>
                         {project.status.replace('-', ' ')}
                       </Badge>
                     </div>

@@ -159,8 +159,8 @@ export default function ClientsPage() {
                     <CardTitle className="text-xl">{client.name}</CardTitle>
                     <CardDescription className="mt-1">{client.industry}</CardDescription>
                   </div>
-                  <Badge className={statusConfig[client.status].color}>
-                    {statusConfig[client.status].label}
+                  <Badge className={statusConfig[client.status as keyof typeof statusConfig].color}>
+                    {statusConfig[client.status as keyof typeof statusConfig].label}
                   </Badge>
                 </div>
               </CardHeader>

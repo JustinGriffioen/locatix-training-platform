@@ -231,7 +231,7 @@ export default function ClientProjectsPage() {
                     <CardDescription className="mt-1">{project.client}</CardDescription>
                   </div>
                   <div className="flex items-center gap-2 ml-4">
-                    <Badge className={priorityConfig[project.priority]}>
+                    <Badge className={priorityConfig[project.priority as keyof typeof priorityConfig]}>
                       {project.priority}
                     </Badge>
                     <Button variant="ghost" size="sm">
