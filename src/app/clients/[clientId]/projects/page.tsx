@@ -218,7 +218,7 @@ export default function ClientProjectsPage() {
       {/* Projects Grid */}
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {projects.map((project) => {
-          const StatusIcon = statusConfig[project.status].icon
+          const StatusIcon = statusConfig[project.status as keyof typeof statusConfig].icon
           const completedTasks = project.tasks.filter(t => t.completed).length
           const totalTasks = project.tasks.length
 
@@ -249,7 +249,7 @@ export default function ClientProjectsPage() {
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
                       <StatusIcon className="h-4 w-4" />
-                      <Badge className={statusConfig[project.status].color}>
+                      <Badge className={statusConfig[project.status as keyof typeof statusConfig].color}>
                         {project.status.replace('-', ' ')}
                       </Badge>
                     </div>
