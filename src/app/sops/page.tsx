@@ -4,48 +4,213 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Progress } from '@/components/ui/progress'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
-import { CheckSquare, Clock, Calendar, AlertTriangle, CheckCircle, Users, Code, PenTool, Target, FileText, Mail } from 'lucide-react'
+import { CheckSquare, Users, Target, FileText, BookOpen, PlayCircle, Calendar, PenTool, Code, Mail, CheckCircle } from 'lucide-react'
 
-const sopCategories = [
+// Internal SOPs - For Locatix Team Operations
+const internalSops = [
   {
     id: 'mission-vision',
     title: 'Mission & Vision',
+    description: 'Company purpose, values, and strategic direction',
     icon: Target,
-    color: 'bg-purple-500',
-    tasks: [
-      {
-        id: 1,
-        title: 'Company Mission Review',
-        description: 'Review and understand Locatix mission',
-        completed: true,
-        deadline: 'Monthly',
-        priority: 'high',
-        subtasks: [
-          { id: 1, title: 'Read mission statement', completed: true },
-          { id: 2, title: 'Understand core beliefs', completed: true },
-          { id: 3, title: 'Review what we avoid', completed: true }
-        ]
-      },
-      {
-        id: 2,
-        title: 'Core Values Alignment',
-        description: 'Ensure team alignment with company values',
-        completed: false,
-        deadline: 'Quarterly',
-        priority: 'medium',
-        subtasks: [
-          { id: 1, title: 'Review core beliefs', completed: true },
-          { id: 2, title: 'Discuss strengths', completed: false },
-          { id: 3, title: 'Address flaws we\'re fixing', completed: false }
-        ]
-      }
-    ]
+    color: 'bg-black',
+    type: 'documentation',
+    href: '/sops/mission-vision'
   },
+  {
+    id: 'va-operations',
+    title: 'VA Operations',
+    description: 'Virtual assistant hiring, training, and management',
+    icon: Users,
+    color: 'bg-gray-800',
+    type: 'documentation',
+    href: '/sops/va-ops'
+  },
+  {
+    id: 'team-scheduling',
+    title: 'Team Scheduling & HR',
+    description: 'Global team coordination and HR processes',
+    icon: Calendar,
+    color: 'bg-gray-700',
+    type: 'documentation',
+    href: '/sops/schedules-hr'
+  },
+  {
+    id: 'content-development',
+    title: 'Content Development',
+    description: 'Content creation workflows and copywriting frameworks',
+    icon: PenTool,
+    color: 'bg-black',
+    type: 'documentation',
+    href: '/sops/content-dev'
+  },
+  {
+    id: 'seo-video-production',
+    title: 'SEO & Video Production',
+    description: 'Search optimization and video content creation',
+    icon: Code,
+    color: 'bg-gray-800',
+    type: 'documentation',
+    href: '/sops/seo-video'
+  },
+  {
+    id: 'webinar-management',
+    title: 'Webinar Management',
+    description: 'Event planning, promotion, and execution (shareable with clients)',
+    icon: Calendar,
+    color: 'bg-gray-700',
+    type: 'documentation',
+    href: '/sops/webinars'
+  },
+  {
+    id: 'development-sops',
+    title: 'Development SOPs',
+    description: 'Web development and deployment processes (DFY internal workflows)',
+    icon: Code,
+    color: 'bg-black',
+    type: 'documentation',
+    href: '/sops/development'
+  },
+  {
+    id: 'tender-sops',
+    title: 'Tender SOPs',
+    description: 'Government bid writing and tender management frameworks',
+    icon: FileText,
+    color: 'bg-gray-800',
+    type: 'documentation',
+    href: '/sops/tender-sops'
+  }
+]
+
+// Client SOPs - For Client Delivery & Services (Mix of Templates + Customization)
+const clientSops = [
+  {
+    id: 'icp-mapping',
+    title: 'ICP Mapping',
+    description: 'Ideal customer profile development and targeting (client-specific)',
+    icon: Target,
+    color: 'bg-black',
+    type: 'documentation',
+    templated: false,
+    href: '/sops/icp-mapping'
+  },
+  {
+    id: 'crm-operations',
+    title: 'CRM Operations',
+    description: 'Contact management and client communication protocols',
+    icon: FileText,
+    color: 'bg-gray-800',
+    type: 'documentation',
+    templated: true,
+    href: '/sops/crm-ops'
+  },
+  {
+    id: 'outbound-sops',
+    title: 'Outbound SOPs',
+    description: 'Lead generation and appointment setting processes (mostly templated)',
+    icon: Mail,
+    color: 'bg-gray-700',
+    type: 'documentation',
+    templated: true,
+    href: '/sops/outbound'
+  },
+  {
+    id: 'sales-scripts',
+    title: 'Sales Scripts',
+    description: 'Discovery calls, demos, and objection handling (templated frameworks)',
+    icon: Users,
+    color: 'bg-black',
+    type: 'documentation',
+    templated: true,
+    href: '/sops/sales-scripts'
+  },
+  {
+    id: 'service-delivery',
+    title: 'Service Delivery',
+    description: 'Client onboarding and project management processes',
+    icon: CheckCircle,
+    color: 'bg-gray-800',
+    type: 'documentation',
+    templated: true,
+    href: '/sops/service-delivery'
+  },
+  {
+    id: 'tech-stack',
+    title: 'Tech Stack Overview',
+    description: 'Client technology ecosystem and integration requirements',
+    icon: Code,
+    color: 'bg-gray-700',
+    type: 'documentation',
+    templated: false,
+    href: '/sops/tech-stack'
+  }
+]
+
+// Training Modules - For Team Development (Future: Video-based with backend tracking)
+const trainingModules = [
+  {
+    id: 'sdr-bdr-training',
+    title: 'SDR/BDR Training',
+    description: 'Outbound sales prospecting and appointment setting',
+    icon: Users,
+    color: 'bg-black',
+    type: 'training',
+    progress: 45,
+    modules: 8,
+    href: '/sdr-bdr'
+  },
+  {
+    id: 'content-marketing',
+    title: 'Content Marketing Training',
+    description: 'Strategic content creation and sales enablement',
+    icon: PenTool,
+    color: 'bg-gray-800',
+    type: 'training',
+    progress: 35,
+    modules: 6,
+    href: '/content'
+  },
+  {
+    id: 'web-development',
+    title: 'Web Development Training',
+    description: 'Full-stack development and deployment workflows',
+    icon: Code,
+    color: 'bg-gray-700',
+    type: 'training',
+    progress: 60,
+    modules: 6,
+    href: '/webdev'
+  },
+  {
+    id: 'client-services',
+    title: 'Client Services Training',
+    description: 'Customer success and account management',
+    icon: CheckCircle,
+    color: 'bg-black',
+    type: 'training',
+    progress: 50,
+    modules: 6,
+    href: '/client-services'
+  },
+  {
+    id: 'operations-hr',
+    title: 'Operations & HR Training',
+    description: 'Team management and operational excellence',
+    icon: Users,
+    color: 'bg-gray-800',
+    type: 'training',
+    progress: 0,
+    modules: 6,
+    href: '/operations'
+  }
+]
+
+const sopModules = [
   {
     id: 'icp-mapping',
     title: 'ICP Mapping',
     icon: Target,
-    color: 'bg-green-500',
+    color: 'bg-black',
     tasks: [
       {
         id: 1,
@@ -79,7 +244,7 @@ const sopCategories = [
     id: 'crm-ops',
     title: 'CRM Operations',
     icon: FileText,
-    color: 'bg-blue-500',
+    color: 'bg-gray-800',
     tasks: [
       {
         id: 1,
@@ -113,7 +278,7 @@ const sopCategories = [
     id: 'outbound',
     title: 'Outbound SOPs',
     icon: Mail,
-    color: 'bg-orange-500',
+    color: 'bg-gray-700',
     tasks: [
       {
         id: 1,
@@ -160,7 +325,7 @@ const sopCategories = [
     id: 'sales-scripts',
     title: 'Sales Scripts & GTM',
     icon: Users,
-    color: 'bg-red-500',
+    color: 'bg-black',
     tasks: [
       {
         id: 1,
@@ -194,7 +359,7 @@ const sopCategories = [
     id: 'content-dev',
     title: 'Content Development',
     icon: PenTool,
-    color: 'bg-pink-500',
+    color: 'bg-gray-800',
     tasks: [
       {
         id: 1,
@@ -228,7 +393,7 @@ const sopCategories = [
     id: 'seo-video',
     title: 'SEO & Video Production',
     icon: Code,
-    color: 'bg-indigo-500',
+    color: 'bg-gray-700',
     tasks: [
       {
         id: 1,
@@ -262,7 +427,7 @@ const sopCategories = [
     id: 'webinars',
     title: 'Webinar Management',
     icon: Calendar,
-    color: 'bg-teal-500',
+    color: 'bg-black',
     tasks: [
       {
         id: 1,
@@ -296,7 +461,7 @@ const sopCategories = [
     id: 'va-ops',
     title: 'VA Operations',
     icon: Users,
-    color: 'bg-cyan-500',
+    color: 'bg-gray-800',
     tasks: [
       {
         id: 1,
@@ -343,7 +508,7 @@ const sopCategories = [
     id: 'schedules-hr',
     title: 'Schedules & HR',
     icon: Calendar,
-    color: 'bg-amber-500',
+    color: 'bg-gray-700',
     tasks: [
       {
         id: 1,
@@ -377,7 +542,7 @@ const sopCategories = [
     id: 'sdr',
     title: 'SDR/BDR SOPs',
     icon: Users,
-    color: 'bg-blue-500',
+    color: 'bg-black',
     tasks: [
       {
         id: 1,
@@ -424,7 +589,7 @@ const sopCategories = [
     id: 'webdev',
     title: 'Web Development SOPs',
     icon: Code,
-    color: 'bg-green-500',
+    color: 'bg-gray-800',
     tasks: [
       {
         id: 1,
@@ -459,7 +624,7 @@ const sopCategories = [
     id: 'content',
     title: 'Content Marketing SOPs',
     icon: PenTool,
-    color: 'bg-purple-500',
+    color: 'bg-gray-700',
     tasks: [
       {
         id: 1,
@@ -492,22 +657,6 @@ const sopCategories = [
 ]
 
 export default function SOPsPage() {
-  const getPriorityColor = (priority: string) => {
-    switch (priority) {
-      case 'high': return 'bg-red-100 text-red-800'
-      case 'medium': return 'bg-yellow-100 text-yellow-800'
-      case 'low': return 'bg-green-100 text-green-800'
-      default: return 'bg-gray-100 text-gray-800'
-    }
-  }
-
-  const getPriorityIcon = (priority: string) => {
-    switch (priority) {
-      case 'high': return <AlertTriangle className="h-4 w-4" />
-      default: return <Clock className="h-4 w-4" />
-    }
-  }
-
   return (
     <div className="space-y-8">
       {/* Header */}
@@ -518,179 +667,192 @@ export default function SOPsPage() {
               <CheckSquare className="h-6 w-6 text-white" />
             </div>
             <div>
-              <h1 className="text-4xl font-bold text-black tracking-tight">SOPs & Timetable</h1>
-              <p className="text-gray-600 text-lg">Standard operating procedures and scheduled tasks</p>
+              <h1 className="text-4xl font-bold text-black tracking-tight">SOPs & Training Hub</h1>
+              <p className="text-gray-600 text-lg">Documentation, procedures, and team development resources</p>
             </div>
           </div>
         </div>
         <div className="flex items-center gap-4">
           <Badge variant="outline" className="flex items-center gap-2 px-3 py-1">
-            <Calendar className="h-4 w-4" />
-            Updated Today
+            <BookOpen className="h-4 w-4" />
+            {internalSops.length + clientSops.length} SOPs
+          </Badge>
+          <Badge variant="outline" className="flex items-center gap-2 px-3 py-1">
+            <PlayCircle className="h-4 w-4" />
+            {trainingModules.length} Training Tracks
           </Badge>
         </div>
       </div>
 
-      {/* Overview Stats */}
-      <div className="grid gap-6 md:grid-cols-3">
-        <Card>
-          <CardHeader className="pb-3">
-            <CardTitle className="text-lg flex items-center gap-2">
-              <CheckCircle className="h-5 w-5 text-green-500" />
-              Completed Today
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="text-3xl font-bold text-green-600">12</div>
-            <p className="text-sm text-gray-600">tasks completed</p>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardHeader className="pb-3">
-            <CardTitle className="text-lg flex items-center gap-2">
-              <Clock className="h-5 w-5 text-orange-500" />
-              Due Today
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="text-3xl font-bold text-orange-600">5</div>
-            <p className="text-sm text-gray-600">tasks remaining</p>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardHeader className="pb-3">
-            <CardTitle className="text-lg flex items-center gap-2">
-              <AlertTriangle className="h-5 w-5 text-red-500" />
-              Overdue
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="text-3xl font-bold text-red-600">2</div>
-            <p className="text-sm text-gray-600">need attention</p>
-          </CardContent>
-        </Card>
-      </div>
-
-      {/* SOP Categories */}
+      {/* Internal SOPs Section */}
       <div className="space-y-6">
-        {sopCategories.map((category) => {
-          const Icon = category.icon
-          const totalTasks = category.tasks.length
-          const completedTasks = category.tasks.filter(task => task.completed).length
-          const progress = (completedTasks / totalTasks) * 100
+        <div className="flex items-center gap-3">
+          <div className="h-8 w-8 rounded-lg bg-blue-100 flex items-center justify-center">
+            <Users className="h-4 w-4 text-blue-600" />
+          </div>
+          <h2 className="text-2xl font-semibold text-gray-900">Internal SOPs</h2>
+          <Badge variant="secondary">{internalSops.length} documents</Badge>
+        </div>
+        <p className="text-gray-600">Standard operating procedures for Locatix internal operations and team management</p>
 
-          return (
-            <Card key={category.id}>
-              <CardHeader>
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-3">
-                    <div className={`p-2 rounded-lg ${category.color}`}>
+        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {internalSops.map((sop) => {
+            const Icon = sop.icon
+            return (
+              <Card key={sop.id} className="hover:shadow-lg transition-shadow border-l-4 border-l-blue-500">
+                <CardHeader className="pb-3">
+                  <div className="flex items-center justify-between">
+                    <div className={`p-2 rounded-lg ${sop.color}`}>
                       <Icon className="h-5 w-5 text-white" />
                     </div>
-                    <div>
-                      <CardTitle className="text-xl">{category.title}</CardTitle>
-                      <CardDescription>{completedTasks} of {totalTasks} tasks completed</CardDescription>
+                    <Badge variant="outline" className="text-xs">Internal</Badge>
+                  </div>
+                  <CardTitle className="text-lg">{sop.title}</CardTitle>
+                  <CardDescription className="text-sm">{sop.description}</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <a
+                    href={sop.href}
+                    className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded text-center block transition-colors"
+                  >
+                    View SOP
+                  </a>
+                </CardContent>
+              </Card>
+            )
+          })}
+        </div>
+      </div>
+
+      {/* Client SOPs Section */}
+      <div className="space-y-6">
+        <div className="flex items-center gap-3">
+          <div className="h-8 w-8 rounded-lg bg-green-100 flex items-center justify-center">
+            <Target className="h-4 w-4 text-green-600" />
+          </div>
+          <h2 className="text-2xl font-semibold text-gray-900">Client SOPs</h2>
+          <Badge variant="secondary">{clientSops.length} documents</Badge>
+        </div>
+        <p className="text-gray-600">Standard operating procedures for client delivery, sales, and service processes (mix of templates + client-specific customization)</p>
+
+        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {clientSops.map((sop) => {
+            const Icon = sop.icon
+            const getTemplatedBadge = () => {
+              if (sop.templated === true) return <Badge variant="outline" className="text-xs bg-blue-50 text-blue-700">Templated</Badge>
+              if (sop.templated === false) return <Badge variant="outline" className="text-xs bg-orange-50 text-orange-700">Client-Specific</Badge>
+              if (sop.templated === 'mixed') return <Badge variant="outline" className="text-xs bg-purple-50 text-purple-700">Mixed</Badge>
+              return <Badge variant="outline" className="text-xs">Client</Badge>
+            }
+
+            return (
+              <Card key={sop.id} className="hover:shadow-lg transition-shadow border-l-4 border-l-green-500">
+                <CardHeader className="pb-3">
+                  <div className="flex items-center justify-between">
+                    <div className={`p-2 rounded-lg ${sop.color}`}>
+                      <Icon className="h-5 w-5 text-white" />
+                    </div>
+                    {getTemplatedBadge()}
+                  </div>
+                  <CardTitle className="text-lg">{sop.title}</CardTitle>
+                  <CardDescription className="text-sm">{sop.description}</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <a
+                    href={sop.href}
+                    className="w-full bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded text-center block transition-colors"
+                  >
+                    View SOP
+                  </a>
+                </CardContent>
+              </Card>
+            )
+          })}
+        </div>
+      </div>
+
+      {/* Training Modules Section */}
+      <div className="space-y-6">
+        <div className="flex items-center gap-3">
+          <div className="h-8 w-8 rounded-lg bg-purple-100 flex items-center justify-center">
+            <PlayCircle className="h-4 w-4 text-purple-600" />
+          </div>
+          <h2 className="text-2xl font-semibold text-gray-900">Training Modules</h2>
+          <Badge variant="secondary">{trainingModules.length} tracks</Badge>
+        </div>
+        <p className="text-gray-600">Interactive training programs for team skill development (future: video-based with progress tracking)</p>
+
+        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {trainingModules.map((module) => {
+            const Icon = module.icon
+            return (
+              <Card key={module.id} className="hover:shadow-lg transition-shadow border-l-4 border-l-purple-500">
+                <CardHeader className="pb-3">
+                  <div className="flex items-center justify-between">
+                    <div className={`p-2 rounded-lg ${module.color}`}>
+                      <Icon className="h-5 w-5 text-white" />
+                    </div>
+                    <div className="text-right">
+                      <Badge variant="outline" className="text-xs mb-1">Training</Badge>
+                      <div className="text-sm text-gray-600">{module.progress}% complete</div>
                     </div>
                   </div>
-                  <Badge variant="secondary">{Math.round(progress)}% Complete</Badge>
-                </div>
-                <Progress value={progress} className="mt-4" />
-              </CardHeader>
-
-              <CardContent className="space-y-4">
-                {category.tasks.map((task) => {
-                  const completedSubtasks = task.subtasks.filter(st => st.completed).length
-                  const totalSubtasks = task.subtasks.length
-
-                  return (
-                    <Card key={task.id} className={`border-l-4 ${task.completed ? 'border-l-green-500 bg-green-50' : 'border-l-gray-300'}`}>
-                      <CardContent className="p-4">
-                        <div className="flex items-start justify-between">
-                          <div className="flex items-start gap-3 flex-1">
-                            <div className={`w-4 h-4 rounded border-2 mt-1 ${task.completed ? 'bg-black border-black' : 'border-gray-300'}`}>
-                              {task.completed && (
-                                <svg className="w-3 h-3 text-white mt-0.5 ml-0.5" fill="currentColor" viewBox="0 0 20 20">
-                                  <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                                </svg>
-                              )}
-                            </div>
-                            <div className="flex-1">
-                              <div className="flex items-center gap-2 mb-2">
-                                <h4 className={`font-semibold ${task.completed ? 'line-through text-gray-500' : 'text-gray-900'}`}>
-                                  {task.title}
-                                </h4>
-                                <Badge className={getPriorityColor(task.priority)}>
-                                  {getPriorityIcon(task.priority)}
-                                  <span className="ml-1">{task.priority}</span>
-                                </Badge>
-                              </div>
-                              <p className="text-sm text-gray-600 mb-3">{task.description}</p>
-                              <div className="flex items-center gap-4 text-xs text-gray-500 mb-3">
-                                <span className="flex items-center gap-1">
-                                  <Calendar className="h-3 w-3" />
-                                  Due: {task.deadline}
-                                </span>
-                                <span>{completedSubtasks}/{totalSubtasks} subtasks</span>
-                              </div>
-
-                              {/* Subtasks */}
-                              <div className="space-y-2">
-                                {task.subtasks.map((subtask) => (
-                                  <div key={subtask.id} className="flex items-center gap-2 text-sm">
-                                    <div className={`w-3 h-3 rounded border ${subtask.completed ? 'bg-black border-black' : 'border-gray-300'}`}>
-                                      {subtask.completed && (
-                                        <svg className="w-2 h-2 text-white mt-0.5 ml-0.5" fill="currentColor" viewBox="0 0 20 20">
-                                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                                        </svg>
-                                      )}
-                                    </div>
-                                    <span className={subtask.completed ? 'line-through text-gray-500' : 'text-gray-700'}>
-                                      {subtask.title}
-                                    </span>
-                                  </div>
-                                ))}
-                              </div>
-                            </div>
-                          </div>
-                          <Badge variant={task.completed ? 'default' : 'outline'} className="text-xs">
-                            {task.completed ? 'Completed' : 'Pending'}
-                          </Badge>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  )
-                })}
-              </CardContent>
-            </Card>
-          )
-        })}
+                  <CardTitle className="text-lg">{module.title}</CardTitle>
+                  <CardDescription className="text-sm">{module.description}</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="mb-3">
+                    <div className="flex justify-between text-sm text-gray-600 mb-1">
+                      <span>Progress</span>
+                      <span>{module.modules} modules</span>
+                    </div>
+                    <div className="w-full bg-gray-200 rounded-full h-2">
+                      <div
+                        className="bg-purple-600 h-2 rounded-full transition-all duration-300"
+                        style={{ width: `${module.progress}%` }}
+                      ></div>
+                    </div>
+                  </div>
+                  <a
+                    href={module.href}
+                    className="w-full bg-purple-600 hover:bg-purple-700 text-white py-2 px-4 rounded text-center block transition-colors"
+                  >
+                    Start Training
+                  </a>
+                </CardContent>
+              </Card>
+            )
+          })}
+        </div>
       </div>
 
       {/* Quick Actions */}
       <Card>
         <CardHeader>
           <CardTitle>Quick Actions</CardTitle>
-          <CardDescription>Manage your SOPs and schedule</CardDescription>
+          <CardDescription>Access key resources and management tools</CardDescription>
         </CardHeader>
         <CardContent>
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-            <div className="h-auto p-4 flex flex-col items-center gap-2 text-center border rounded-lg">
-              <CheckSquare className="h-6 w-6 text-gray-400" />
-              <span className="text-sm text-gray-600">Bulk Update</span>
+            <div className="h-auto p-4 flex flex-col items-center gap-2 text-center border rounded-lg hover:border-blue-300 transition-colors">
+              <FileText className="h-6 w-6 text-blue-500" />
+              <span className="text-sm font-medium text-gray-700">New SOP Template</span>
+              <span className="text-xs text-gray-500">Create documentation</span>
             </div>
-            <div className="h-auto p-4 flex flex-col items-center gap-2 text-center border rounded-lg">
-              <Calendar className="h-6 w-6 text-gray-400" />
-              <span className="text-sm text-gray-600">Schedule Tasks</span>
+            <div className="h-auto p-4 flex flex-col items-center gap-2 text-center border rounded-lg hover:border-green-300 transition-colors">
+              <PlayCircle className="h-6 w-6 text-green-500" />
+              <span className="text-sm font-medium text-gray-700">Training Dashboard</span>
+              <span className="text-xs text-gray-500">Track progress</span>
             </div>
-            <div className="h-auto p-4 flex flex-col items-center gap-2 text-center border rounded-lg">
-              <AlertTriangle className="h-6 w-6 text-gray-400" />
-              <span className="text-sm text-gray-600">View Overdue</span>
+            <div className="h-auto p-4 flex flex-col items-center gap-2 text-center border rounded-lg hover:border-purple-300 transition-colors">
+              <Users className="h-6 w-6 text-purple-500" />
+              <span className="text-sm font-medium text-gray-700">Team Onboarding</span>
+              <span className="text-xs text-gray-500">New hire resources</span>
             </div>
-            <div className="h-auto p-4 flex flex-col items-center gap-2 text-center border rounded-lg">
-              <CheckCircle className="h-6 w-6 text-gray-400" />
-              <span className="text-sm text-gray-600">Generate Report</span>
+            <div className="h-auto p-4 flex flex-col items-center gap-2 text-center border rounded-lg hover:border-orange-300 transition-colors">
+              <CheckCircle className="h-6 w-6 text-orange-500" />
+              <span className="text-sm font-medium text-gray-700">Process Audit</span>
+              <span className="text-xs text-gray-500">Review compliance</span>
             </div>
           </div>
         </CardContent>

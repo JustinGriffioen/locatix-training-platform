@@ -2,225 +2,74 @@
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
-import { Users, Clock, Target, TrendingUp, CheckCircle, MessageSquare } from 'lucide-react'
-
-const vaRoles = [
-  {
-    title: 'Lead Generation VA',
-    description: 'Outbound prospecting and lead qualification',
-    responsibilities: [
-      'LinkedIn and email outreach campaigns',
-      'Lead research and prospect profiling',
-      'CRM data entry and management',
-      'Follow-up sequences and nurturing',
-      'Meeting scheduling and coordination'
-    ],
-    dailyTargets: '50-100 personalized outreach messages',
-    tools: ['LinkedIn Sales Navigator', 'HubSpot CRM', 'Lemlist', 'Zoom']
-  },
-  {
-    title: 'Content Creation VA',
-    description: 'Social media management and content production',
-    responsibilities: [
-      'Social media posting and engagement',
-      'Content calendar management',
-      'Graphic design and video editing',
-      'Community management and responses',
-      'Analytics reporting and insights'
-    ],
-    dailyTargets: '5-10 social media posts, 20+ engagement actions',
-    tools: ['Canva', 'WePost', 'Buffer', 'Hootsuite']
-  },
-  {
-    title: 'Administrative VA',
-    description: 'Operations support and administrative tasks',
-    responsibilities: [
-      'Email management and inbox organization',
-      'Calendar scheduling and meeting coordination',
-      'Document creation and formatting',
-      'Data entry and research tasks',
-      'Client onboarding support'
-    ],
-    dailyTargets: '20-30 administrative tasks completed',
-    tools: ['Google Workspace', 'Microsoft Office', 'Trello', 'Asana']
-  }
-]
-
-const hiringProcess = [
-  {
-    step: 'Platform Selection',
-    description: 'Use Onlinejobs.ph for Filipino VAs with proven track record',
-    duration: '1-2 days'
-  },
-  {
-    step: 'Job Posting',
-    description: 'Create detailed job description with specific requirements and expectations',
-    duration: '1 day'
-  },
-  {
-    step: 'Initial Screening',
-    description: 'Review applications and request video introductions from top candidates',
-    duration: '2-3 days'
-  },
-  {
-    step: 'Technical Assessment',
-    description: 'Test candidates on required tools and basic skills evaluation',
-    duration: '1-2 days'
-  },
-  {
-    step: 'Interviews',
-    description: 'Conduct 1-on-1 interviews focusing on communication and work ethic',
-    duration: '2-3 days'
-  },
-  {
-    step: 'Reference Checks',
-    description: 'Contact previous employers and verify work history',
-    duration: '1 day'
-  },
-  {
-    step: 'Offer & Onboarding',
-    description: 'Extend offer and begin comprehensive onboarding process',
-    duration: '3-5 days'
-  }
-]
-
-const onboardingSteps = [
-  {
-    phase: 'Pre-Start Preparation',
-    duration: '1 week before start',
-    activities: [
-      'Send welcome package with company overview',
-      'Share employee handbook and policies',
-      'Set up all required accounts and tools',
-      'Schedule orientation and training sessions'
-    ]
-  },
-  {
-    phase: 'First Week',
-    duration: 'Days 1-3',
-    activities: [
-      'Company culture and values introduction',
-      'Tool and software training sessions',
-      'Process documentation walkthrough',
-      'Shadowing experienced team members'
-    ]
-  },
-  {
-    phase: 'Skill Development',
-    duration: 'Weeks 2-4',
-    activities: [
-      'Role-specific training modules',
-      'Hands-on practice with real tasks',
-      'Performance feedback and coaching',
-      'Gradual increase in responsibilities'
-    ]
-  },
-  {
-    phase: 'Full Integration',
-    duration: 'Ongoing',
-    activities: [
-      'Independent task execution',
-      'Quality assurance and review process',
-      'Performance tracking and optimization',
-      'Career development planning'
-    ]
-  }
-]
-
-const performanceMetrics = [
-  {
-    category: 'Productivity',
-    metrics: [
-      'Tasks completed per day/week',
-      'Response time to requests',
-      'Project completion rate',
-      'Quality score on deliverables'
-    ]
-  },
-  {
-    category: 'Quality',
-    metrics: [
-      'Error rate and accuracy',
-      'Client satisfaction scores',
-      'Adherence to SOPs',
-      'Communication effectiveness'
-    ]
-  },
-  {
-    category: 'Efficiency',
-    metrics: [
-      'Time to complete standard tasks',
-      'Resource utilization',
-      'Process improvement suggestions',
-      'Learning and adaptation speed'
-    ]
-  }
-]
+import { Users, UserPlus, MessageSquare, Calendar, TrendingUp, CheckCircle, AlertTriangle, Clock } from 'lucide-react'
 
 export default function VAOpsPage() {
   return (
     <div className="space-y-8">
       {/* Header */}
-      <div className="flex items-center gap-3 mb-2">
-        <div className="h-12 w-12 rounded-xl bg-black flex items-center justify-center">
-          <Users className="h-6 w-6 text-white" />
-        </div>
+      <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-4xl font-bold text-black tracking-tight">VA Operations</h1>
-          <p className="text-gray-600 text-lg">Virtual assistant hiring, onboarding, and management</p>
+          <div className="flex items-center gap-3 mb-2">
+            <div className="h-12 w-12 rounded-xl bg-cyan-500 flex items-center justify-center">
+              <Users className="h-6 w-6 text-white" />
+            </div>
+            <div>
+              <h1 className="text-4xl font-bold text-black tracking-tight">VA Operations</h1>
+              <p className="text-gray-600 text-lg">Virtual assistant hiring, training, and management</p>
+            </div>
+          </div>
         </div>
       </div>
 
-      {/* VA Roles Overview */}
+      {/* Why VAs Are Essential */}
+      <Card className="border-cyan-200 bg-cyan-50">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2 text-cyan-900">
+            <CheckCircle className="h-5 w-5" />
+            Why VAs Are Essential
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+            <div className="p-4 bg-white rounded-lg border border-cyan-200">
+              <h4 className="font-semibold text-cyan-900 mb-2">Removes Owner Workload</h4>
+              <p className="text-cyan-800 text-sm">Focus shifts to closing deals, not manual outreach</p>
+            </div>
+            <div className="p-4 bg-white rounded-lg border border-cyan-200">
+              <h4 className="font-semibold text-cyan-900 mb-2">Scalable Lead Gen</h4>
+              <p className="text-cyan-800 text-sm">Automates lead generation & supports high-volume operations</p>
+            </div>
+            <div className="p-4 bg-white rounded-lg border border-cyan-200">
+              <h4 className="font-semibold text-cyan-900 mb-2">Cost Effective</h4>
+              <p className="text-cyan-800 text-sm">$2-8/hour labor generating measurable throughput</p>
+            </div>
+            <div className="p-4 bg-white rounded-lg border border-cyan-200">
+              <h4 className="font-semibold text-cyan-900 mb-2">Sustainable Scaling</h4>
+              <p className="text-cyan-800 text-sm">Add more VAs without complexity once system works</p>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* VA Roles */}
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <Users className="h-5 w-5 text-black" />
-            VA Role Categories
+            <UserPlus className="h-5 w-5 text-blue-500" />
+            VA Roles
           </CardTitle>
-          <CardDescription>Common VA roles and responsibilities in BD agency operations</CardDescription>
         </CardHeader>
         <CardContent>
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {vaRoles.map((role, index) => (
-              <Card key={index} className="border-gray-200">
-                <CardHeader>
-                  <CardTitle className="text-lg">{role.title}</CardTitle>
-                  <CardDescription>{role.description}</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-4">
-                    <div>
-                      <p className="text-sm font-medium text-gray-700 mb-2">Key Responsibilities:</p>
-                      <ul className="text-sm text-gray-600 space-y-1">
-                        {role.responsibilities.map((resp, idx) => (
-                          <li key={idx} className="flex items-start gap-2">
-                            <div className="w-1.5 h-1.5 bg-black rounded-full mt-2" />
-                            {resp}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-
-                    <div>
-                      <p className="text-sm font-medium text-gray-700 mb-1">Daily Target:</p>
-                      <p className="text-sm text-gray-600">{role.dailyTargets}</p>
-                    </div>
-
-                    <div>
-                      <p className="text-sm font-medium text-gray-700 mb-2">Key Tools:</p>
-                      <div className="flex flex-wrap gap-1">
-                        {role.tools.map((tool, idx) => (
-                          <Badge key={idx} variant="outline" className="text-xs">
-                            {tool}
-                          </Badge>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
+          <div className="grid gap-4 md:grid-cols-2">
+            <div className="p-4 bg-blue-50 rounded-lg">
+              <h4 className="font-semibold text-blue-900 mb-2">Setters</h4>
+              <p className="text-blue-800 text-sm">Automate lead generation, allowing businesses to scale rapidly.</p>
+            </div>
+            <div className="p-4 bg-green-50 rounded-lg">
+              <h4 className="font-semibold text-green-900 mb-2">Marketers</h4>
+              <p className="text-green-800 text-sm">Manage social media content channels & ads.</p>
+            </div>
           </div>
         </CardContent>
       </Card>
@@ -229,29 +78,63 @@ export default function VAOpsPage() {
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <Target className="h-5 w-5 text-black" />
-            VA Hiring Process
+            <UserPlus className="h-5 w-5 text-green-500" />
+            1. Hiring Process
           </CardTitle>
-          <CardDescription>Structured approach to finding and hiring qualified virtual assistants</CardDescription>
         </CardHeader>
-        <CardContent>
-          <div className="space-y-4">
-            {hiringProcess.map((step, index) => (
-              <div key={index} className="flex items-start gap-4 p-4 border border-gray-200 rounded-lg">
-                <div className="flex-shrink-0 w-8 h-8 rounded-full bg-black text-white flex items-center justify-center text-sm font-semibold">
-                  {index + 1}
-                </div>
-                <div className="flex-1">
-                  <div className="flex items-center justify-between mb-1">
-                    <h4 className="font-semibold text-black">{step.step}</h4>
-                    <Badge variant="outline" className="text-xs">
-                      {step.duration}
-                    </Badge>
-                  </div>
-                  <p className="text-sm text-gray-600">{step.description}</p>
+        <CardContent className="space-y-6">
+          <div>
+            <h4 className="font-semibold mb-3">Where to Find VAs</h4>
+            <div className="grid gap-3">
+              <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
+                <CheckCircle className="h-5 w-5 text-green-500" />
+                <div>
+                  <span className="font-medium">Existing Network</span>
+                  <span className="text-gray-600 ml-2">– Always the first choice</span>
                 </div>
               </div>
-            ))}
+              <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
+                <Users className="h-5 w-5 text-blue-500" />
+                <div>
+                  <span className="font-medium">Onlinejobs.ph</span>
+                  <span className="text-gray-600 ml-2">– Hire affordable, skilled VAs</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <h4 className="font-semibold mb-3">Hiring Workflow</h4>
+            <div className="space-y-3">
+              <div className="flex items-start gap-3 p-3 bg-blue-50 rounded-lg">
+                <div className="w-6 h-6 bg-blue-500 text-white rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0">1</div>
+                <div>
+                  <span className="font-medium">Post Job & Get Applications</span>
+                  <p className="text-sm text-blue-800 mt-1">Create job post specifying role (e.g., Instagram B2B Lead Generation). Expect 100+ applicants.</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-3 p-3 bg-green-50 rounded-lg">
+                <div className="w-6 h-6 bg-green-500 text-white rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0">2</div>
+                <div>
+                  <span className="font-medium">Loom Video Screening</span>
+                  <p className="text-sm text-green-800 mt-1">Send standard message asking all candidates to submit Loom video introduction. Only 50% respond initially.</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-3 p-3 bg-orange-50 rounded-lg">
+                <div className="w-6 h-6 bg-orange-500 text-white rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0">3</div>
+                <div>
+                  <span className="font-medium">Shortlist & Group Interviews</span>
+                  <p className="text-sm text-orange-800 mt-1">Out of respondents, only 5-10 will be potential candidates. Conduct group interviews to walk through expectations.</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-3 p-3 bg-red-50 rounded-lg">
+                <div className="w-6 h-6 bg-red-500 text-white rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0">4</div>
+                <div>
+                  <span className="font-medium">Final Selection</span>
+                  <p className="text-sm text-red-800 mt-1">Choose 1-2 VAs who demonstrate skill & commitment. Proceed to 30-min 1-on-1 interviews.</p>
+                </div>
+              </div>
+            </div>
           </div>
         </CardContent>
       </Card>
@@ -260,97 +143,195 @@ export default function VAOpsPage() {
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <CheckCircle className="h-5 w-5 text-black" />
-            VA Onboarding Framework
+            <CheckCircle className="h-5 w-5 text-purple-500" />
+            2. Onboarding Process
           </CardTitle>
-          <CardDescription>Comprehensive 30-90 day onboarding process for new VAs</CardDescription>
         </CardHeader>
-        <CardContent>
-          <div className="grid gap-6 md:grid-cols-2">
-            {onboardingSteps.map((phase, index) => (
-              <Card key={index} className="border-gray-200">
-                <CardHeader>
-                  <div className="flex items-center justify-between">
-                    <CardTitle className="text-lg">{phase.phase}</CardTitle>
-                    <Badge variant="outline">{phase.duration}</Badge>
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  <ul className="space-y-2">
-                    {phase.activities.map((activity, idx) => (
-                      <li key={idx} className="flex items-start gap-2 text-sm text-gray-600">
-                        <div className="w-1.5 h-1.5 bg-black rounded-full mt-2" />
-                        {activity}
-                      </li>
-                    ))}
-                  </ul>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </CardContent>
-      </Card>
-
-      {/* Performance Management */}
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <TrendingUp className="h-5 w-5 text-black" />
-            Performance Management
-          </CardTitle>
-          <CardDescription>Key metrics and KPIs for VA performance tracking</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <div className="grid gap-6 md:grid-cols-3">
-            {performanceMetrics.map((category, index) => (
-              <Card key={index} className="border-gray-200">
-                <CardHeader>
-                  <CardTitle className="text-lg">{category.category}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <ul className="space-y-2">
-                    {category.metrics.map((metric, idx) => (
-                      <li key={idx} className="flex items-start gap-2 text-sm text-gray-600">
-                        <div className="w-1.5 h-1.5 bg-gray-400 rounded-full mt-2" />
-                        {metric}
-                      </li>
-                    ))}
-                  </ul>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </CardContent>
-      </Card>
-
-      {/* Best Practices */}
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <MessageSquare className="h-5 w-5 text-black" />
-            VA Management Best Practices
-          </CardTitle>
-          <CardDescription>Key principles for successful VA partnerships</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <div className="grid gap-6 md:grid-cols-2">
-            <div>
-              <h4 className="font-semibold text-black mb-3">Communication</h4>
-              <ul className="space-y-2 text-sm text-gray-600">
-                <li>• Clear expectations and regular feedback</li>
-                <li>• Structured daily check-ins and reporting</li>
-                <li>• Cultural sensitivity and time zone awareness</li>
-                <li>• Written documentation for all processes</li>
-              </ul>
+        <CardContent className="space-y-6">
+          <div className="grid gap-4 md:grid-cols-3">
+            <div className="p-4 bg-purple-50 rounded-lg text-center">
+              <div className="text-xl font-bold text-purple-600 mb-2">1</div>
+              <div className="text-sm font-medium text-purple-900">Expectation Setting Call</div>
+              <div className="text-xs text-purple-800 mt-1">Explain role, tasks, goals</div>
             </div>
-            <div>
-              <h4 className="font-semibold text-black mb-3">Operations</h4>
-              <ul className="space-y-2 text-sm text-gray-600">
-                <li>• Gradual task complexity increase</li>
-                <li>• Quality assurance checkpoints</li>
-                <li>• Backup plans for absences</li>
-                <li>• Regular performance reviews</li>
-              </ul>
+            <div className="p-4 bg-blue-50 rounded-lg text-center">
+              <div className="text-xl font-bold text-blue-600 mb-2">2</div>
+              <div className="text-sm font-medium text-blue-900">Orientation Call</div>
+              <div className="text-xs text-blue-800 mt-1">Introduce tools and workflow</div>
+            </div>
+            <div className="p-4 bg-green-50 rounded-lg text-center">
+              <div className="text-xl font-bold text-green-600 mb-2">3</div>
+              <div className="text-sm font-medium text-green-900">Loom SOP Videos</div>
+              <div className="text-xs text-green-800 mt-1">Self-train on key workflows</div>
+            </div>
+          </div>
+
+          <div>
+            <h4 className="font-semibold mb-3">Key Software for VA Operations</h4>
+            <div className="grid gap-3 md:grid-cols-2">
+              <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
+                <MessageSquare className="h-5 w-5 text-indigo-500" />
+                <div>
+                  <span className="font-medium">Discord</span>
+                  <span className="text-gray-600 ml-2">– Internal team communication</span>
+                </div>
+              </div>
+              <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
+                <Calendar className="h-5 w-5 text-blue-500" />
+                <div>
+                  <span className="font-medium">Cal</span>
+                  <span className="text-gray-600 ml-2">– Booking sales calls</span>
+                </div>
+              </div>
+              <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
+                <CheckCircle className="h-5 w-5 text-green-500" />
+                <div>
+                  <span className="font-medium">Airtable</span>
+                  <span className="text-gray-600 ml-2">– Tracking outreach and results</span>
+                </div>
+              </div>
+              <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
+                <TrendingUp className="h-5 w-5 text-purple-500" />
+                <div>
+                  <span className="font-medium">Canva</span>
+                  <span className="text-gray-600 ml-2">– Creating creatives</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Daily Workflow */}
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Clock className="h-5 w-5 text-orange-500" />
+            3. Daily Workflow Management
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-6">
+          <div>
+            <h4 className="font-semibold mb-3">Start of Day (SOD) Check-in</h4>
+            <p className="text-sm text-gray-600 mb-3">VAs report daily tasks in Slack/Discord</p>
+            <div className="grid gap-2 md:grid-cols-2">
+              <div className="p-3 bg-blue-50 rounded-lg">
+                <div className="text-sm font-mono">09:00–09:05 Discord Check-In & Prep</div>
+              </div>
+              <div className="p-3 bg-blue-50 rounded-lg">
+                <div className="text-sm font-mono">09:05–12:00 Inbound Reply Handling & Campaign Check-ups</div>
+              </div>
+              <div className="p-3 bg-blue-50 rounded-lg">
+                <div className="text-sm font-mono">12:00–16:55 n8n Workflow Automation / New Campaign Setup / Web Dev</div>
+              </div>
+              <div className="p-3 bg-blue-50 rounded-lg">
+                <div className="text-sm font-mono">16:55–17:00 End-of-Day Report</div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <h4 className="font-semibold mb-3">DM Outreach System</h4>
+            <div className="space-y-3">
+              <div className="p-4 bg-green-50 rounded-lg">
+                <div className="text-lg font-bold text-green-600">200-300 DMs/day per VA</div>
+                <div className="text-sm text-green-800">10% reply rate = 10-20 warm leads daily per VA</div>
+              </div>
+              <div className="p-4 bg-blue-50 rounded-lg">
+                <div className="text-lg font-bold text-blue-600">Goal: Convert to booked calls</div>
+                <div className="text-sm text-blue-800">Focus on quality outreach that drives engagement</div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <h4 className="font-semibold mb-3">Follow-ups</h4>
+            <p className="text-sm text-gray-600">Essential for increasing booking rates and maintaining engagement</p>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Scaling VA Operations */}
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <TrendingUp className="h-5 w-5 text-teal-500" />
+            4. Scaling VA Operations
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-6">
+          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+            <div className="p-4 bg-teal-50 rounded-lg text-center">
+              <div className="text-2xl font-bold text-teal-600 mb-2">Volume</div>
+              <p className="text-sm text-teal-800">Increase lead volume by hiring more VAs</p>
+            </div>
+            <div className="p-4 bg-teal-50 rounded-lg text-center">
+              <div className="text-2xl font-bold text-teal-600 mb-2">Accounts</div>
+              <p className="text-sm text-teal-800">Add multiple Instagram/LinkedIn accounts</p>
+            </div>
+            <div className="p-4 bg-teal-50 rounded-lg text-center">
+              <div className="text-2xl font-bold text-teal-600 mb-2">Tasks</div>
+              <p className="text-sm text-teal-800">Train for higher-level tasks</p>
+            </div>
+            <div className="p-4 bg-teal-50 rounded-lg text-center">
+              <div className="text-2xl font-bold text-teal-600 mb-2">Analytics</div>
+              <p className="text-sm text-teal-800">Track data & refine processes</p>
+            </div>
+          </div>
+
+          <div className="p-4 bg-yellow-50 rounded-lg">
+            <h4 className="font-semibold text-yellow-900 mb-2 flex items-center gap-2">
+              <AlertTriangle className="h-4 w-4" />
+              Scaling Considerations
+            </h4>
+            <ul className="text-sm text-yellow-800 space-y-1">
+              <li>• Systematize data tracking & analytics to refine processes</li>
+              <li>• Maintain quality standards as volume increases</li>
+              <li>• Ensure clear communication channels for larger teams</li>
+              <li>• Regular performance reviews and feedback loops</li>
+            </ul>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Lead Generation Funnel */}
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <TrendingUp className="h-5 w-5 text-indigo-500" />
+            Lead Generation Funnel with VAs
+          </CardTitle>
+          <CardDescription>Example workflow for VA-powered lead generation</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className="space-y-4">
+            <div className="grid gap-4 md:grid-cols-3">
+              <div className="p-4 bg-indigo-50 rounded-lg text-center">
+                <div className="text-2xl font-bold text-indigo-600">2 VAs</div>
+                <div className="text-sm text-indigo-800">$500/month each</div>
+              </div>
+              <div className="p-4 bg-indigo-50 rounded-lg text-center">
+                <div className="text-2xl font-bold text-indigo-600">200 DMs/day</div>
+                <div className="text-sm text-indigo-800">600 total responses/month</div>
+              </div>
+              <div className="p-4 bg-indigo-50 rounded-lg text-center">
+                <div className="text-2xl font-bold text-indigo-600">10% booking rate</div>
+                <div className="text-sm text-indigo-800">90 booked calls monthly</div>
+              </div>
+            </div>
+
+            <div className="p-4 bg-green-50 rounded-lg">
+              <div className="text-center">
+                <div className="text-xl font-bold text-green-600 mb-1">45 qualified prospects</div>
+                <div className="text-sm text-green-800">50% qualified rate × 90 booked calls</div>
+              </div>
+            </div>
+
+            <div className="p-4 bg-blue-50 rounded-lg">
+              <div className="text-center">
+                <div className="text-xl font-bold text-blue-600 mb-1">~36 sales meetings</div>
+                <div className="text-sm text-blue-800">80% show-up rate × 45 qualified prospects</div>
+              </div>
             </div>
           </div>
         </CardContent>

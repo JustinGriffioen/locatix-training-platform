@@ -11,7 +11,8 @@ import {
   Calendar,
   BarChart3,
   Home,
-  Headphones
+  Headphones,
+  FolderKanban
 } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { LocatixLogo } from './locatix-logo'
@@ -39,29 +40,31 @@ const navigation = [
     href: '#',
     icon: CheckSquare,
     subItems: [
-      { name: 'ICP Mapping & CRM Ops', href: '/sops/icp-crm' },
-      { name: 'Sales Scripts & GTM', href: '/sops/sales-gtm' },
+      { name: 'ICP Mapping', href: '/sops/icp-mapping' },
+      { name: 'CRM Operations', href: '/sops/crm-ops' },
+      { name: 'Sales Scripts & GTM', href: '/sops/sales-scripts' },
       { name: 'Content Development', href: '/sops/content-dev' },
       { name: 'SEO & Video Production', href: '/sops/seo-video' },
       { name: 'Webinar Management', href: '/sops/webinars' },
       { name: 'VA Operations', href: '/sops/va-ops' },
       { name: 'Schedules & HR', href: '/sops/schedules-hr' },
-      { name: 'Schedules & HR', href: '/sops/schedules-hr' },
+      { name: 'Tech Stack', href: '/sops/tech-stack' },
+      { name: 'Mission & Vision', href: '/sops/mission-vision' },
     ]
   },
 
   // Client Workspaces Section
   {
     name: '🏢 Client Workspaces',
-    href: '#',
-    icon: Users,
-    subItems: [
-      { name: 'Client Templates', href: '/clients/templates' },
-      { name: 'Active Projects', href: '/clients/projects' },
-      { name: 'Custom GTM Strategies', href: '/clients/gtm-strategies' },
-      { name: 'ICP Prospecting Guides', href: '/clients/icp-guides' },
-      { name: 'Tender SOPs', href: '/clients/tenders' },
-    ]
+    href: '/clients',
+    icon: Users
+  },
+
+  // Project Management
+  {
+    name: '📋 Project Management',
+    href: '/projects',
+    icon: FolderKanban
   },
 
   // Tools & Analytics
