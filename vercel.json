@@ -1,11 +1,6 @@
 {
-  "functions": {
-    "src/app/**/*.ts": {
-      "runtime": "nodejs18.x"
-    }
-  },
+  "framework": "nextjs",
   "buildCommand": "npm run build",
   "devCommand": "npm run dev",
-  "installCommand": "npm install",
-  "framework": "nextjs"
+  "installCommand": "npm install"
 }
